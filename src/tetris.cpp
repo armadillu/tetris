@@ -110,7 +110,7 @@ void Tetris::update(){
 	
 	if ( time > dropRate ){
 		shape->moveDown();
-		time = 0;
+		time = 0.0f;
 	}
 }
 

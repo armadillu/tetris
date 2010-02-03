@@ -22,13 +22,15 @@ class Shape{
 	Shape( Tetris* board );
 	
 	void update(){};
-	void draw();
 
 	void regenerate();
 	void moveLeft();
 	void moveRight();
 	void moveDown();
 	void dropDown();
+	
+	void rotateRight();
+	void rotateLeft();
 	
 		
 	bool testCollision();

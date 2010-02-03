@@ -36,6 +36,13 @@ void testApp::keyPressed(int key){
 
 	if (key == ' ')
 		game.clearBoard();
+	
+	if (key == 's')
+		game.shape->rotateRight();
+
+	if (key == 'a')
+		game.shape->rotateLeft();
+
 }
 
 //--------------------------------------------------------------

@@ -10,6 +10,7 @@
 #include "Shape.h"
 
 Shape::Shape( Tetris* board){
+	ofSeedRandom( ofGetElapsedTimeMillis() );
 	tetris = board;
 	regenerate();
 }
@@ -90,6 +91,41 @@ void Shape::printOnBoard(){
 }
 
 
+void Shape::rotateLeft(){
+	
+	int t[MAX_SHAPE_SIZE][MAX_SHAPE_SIZE];
+	
+	for (int i = 0; i < MAX_SHAPE_SIZE; i++){
+		for (int j = 0; j < MAX_SHAPE_SIZE; j++){
+			t[i][j] = shape[MAX_SHAPE_SIZE -j -1][i];
+		}
+	}
+	
+	for (int i = 0; i < MAX_SHAPE_SIZE; i++){
+		for (int j = 0; j < MAX_SHAPE_SIZE; j++){
+			shape[i][j]= t[i][j];
+		}
+	}	
+}
+
+
+void Shape::rotateRight(){
+	
+	int t[MAX_SHAPE_SIZE][MAX_SHAPE_SIZE];
+	
+	for (int i = 0; i < MAX_SHAPE_SIZE; i++){
+		for (int j = 0; j < MAX_SHAPE_SIZE; j++){
+			t[i][j] = shape[j][MAX_SHAPE_SIZE -i -1];
+		}
+	}
+	
+	for (int i = 0; i < MAX_SHAPE_SIZE; i++){
+		for (int j = 0; j < MAX_SHAPE_SIZE; j++){
+			shape[i][j]= t[i][j];
+		}
+	}	
+}
+
 void Shape::moveLeft(){
 
 	fresh = false;
@@ -136,6 +172,3 @@ void Shape::dropDown(){
 	
 }
 
-
-void Shape::draw(){
-}
