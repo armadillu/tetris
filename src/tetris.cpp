@@ -11,18 +11,41 @@
 
 Tetris::Tetris(){
 
-	for (int i=0; i<CANVAS_WIDTH; i++){
-		for (int j=0; j<CANVAS_HEIGHT; j++){
-			board[i][j]=0;
-		}
-	}
+	clearBoard();
 	resetCompleteMap();	
 	shape = new Shape(this);
 }
 
 
-void Tetris::dropDown(int line){
+void Tetris::clearBoard(){
+
+	for (int i=0; i<CANVAS_WIDTH; i++){
+		for (int j=0; j<CANVAS_HEIGHT; j++){
+			board[i][j]=0;
+		}
+	}
+}
+
+void Tetris::deleteFullLines(){
+
+	checkForLines();
+	for (int j=0; j<CANVAS_HEIGHT; j++)
+		if (completeLineMap[j] == true)
+			dropDown(j);
 	
+}
+
+void Tetris::dropDown(int line){
+
+	for (int j = line; j >= 1; j--){
+		for (int i = 0; i<CANVAS_WIDTH; i++){
+			board[i][j] = board[i][j-1];			
+		}
+	}
+
+	for (int i = 0; i<CANVAS_WIDTH; i++)
+		board[i][0] = 0;
+
 }
 
 
@@ -111,5 +134,14 @@ void Tetris::setColorForTile(int tile){
 		case 4:
 			glColor3f(1,0,0);
 			break;
+
+		case 5:
+			glColor3f(1,0,1);
+			break;
+
+		case 6:
+			glColor3f(0,1,1);
+			break;
+
 	}
 }

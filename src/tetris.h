@@ -12,10 +12,10 @@
 #include "ofMain.h"
 #include "Shape.h"
 
-#define CANVAS_WIDTH	10
+#define CANVAS_WIDTH	12
 #define CANVAS_HEIGHT	25
 
-#define NUM_PATTERNS	5	/*[0..4]*/
+#define NUM_PATTERNS	6	/*[1..6]*/
 
 class Shape;
 
@@ -27,13 +27,16 @@ class Tetris{
 	~Tetris(){};
 		
 	void update();
-	void checkForLines();
-	void dropDown(int line);
 	void draw();
 
+	void clearBoard();
+	void deleteFullLines();
+	
 	void setColorForTile(int tile);
 	
 	void resetCompleteMap();
+	void dropDown(int line);	//this erases a full line, and drops everything down
+	void checkForLines();
 	
 	
 	int board[CANVAS_WIDTH][CANVAS_HEIGHT];

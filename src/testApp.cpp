@@ -34,6 +34,8 @@ void testApp::keyPressed(int key){
 	if (key == OF_KEY_DOWN)
 		game.shape->moveDown();
 
+	if (key == ' ')
+		game.clearBoard();
 }
 
 //--------------------------------------------------------------

@@ -20,11 +20,11 @@ void Shape::regenerate(){
 	x = CANVAS_WIDTH / 2 - MAX_SHAPE_SIZE / 2;
 	y = -MAX_SHAPE_SIZE;
 
-	int color = ofRandom(1, 4);
+	int color = ofRandom(1, NUM_PATTERNS);
 	
 	for (int i = 0; i < MAX_SHAPE_SIZE; i++){
 		for (int j = 0; j < MAX_SHAPE_SIZE; j++){
-			if (ofRandom(0, 1) < 0.4)
+			if (ofRandom(0, 1) < 0.8)
 				shape[i][j] = color;
 			else
 				shape[i][j] = 0;
@@ -121,7 +121,10 @@ void Shape::moveDown(){
 		y--;
 		falling = false;
 		printOnBoard();
+		
+		tetris->deleteFullLines();
 		regenerate();
+		
 	} 
 }
 
