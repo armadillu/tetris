@@ -12,8 +12,8 @@
 #include "ofMain.h"
 #include "Shape.h"
 
-#define CANVAS_WIDTH	12
-#define CANVAS_HEIGHT	25
+#define CANVAS_WIDTH	10
+#define CANVAS_HEIGHT	20
 
 #define NUM_PATTERNS	6	/*[1..6]*/
 
@@ -38,6 +38,8 @@ class Tetris{
 	void dropDown(int line);	//this erases a full line, and drops everything down
 	void checkForLines();
 	
+	int getClearedLines(){ return clearedLines;	};
+	
 	
 	int board[CANVAS_WIDTH][CANVAS_HEIGHT];
 
@@ -46,5 +48,7 @@ class Tetris{
 	float time;
 	
 	Shape * shape;
+	
+	int clearedLines;
 	
 };

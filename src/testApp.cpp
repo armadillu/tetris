@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
+	ofBackground(0,0,0);
 }
 
 //--------------------------------------------------------------
@@ -13,10 +14,15 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	
-	glTranslatef(20,20,0);
+
+	string aux =  "Lines: ";
+	aux += ofToString (game.getClearedLines() );
+	glColor3ub(255,255,255);
+	ofDrawBitmapString(aux, 40,40);
+
+	glTranslatef(40,60,0);
 	game.draw();
-	
+		
 }
 
 //--------------------------------------------------------------

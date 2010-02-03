@@ -11,7 +11,7 @@
 
 #include "tetris.h"
 
-#define MAX_SHAPE_SIZE		4
+#define MAX_SHAPE_SIZE		3
 
 class Tetris;
 

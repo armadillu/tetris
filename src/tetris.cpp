@@ -19,6 +19,8 @@ Tetris::Tetris(){
 
 void Tetris::clearBoard(){
 
+	clearedLines = 0;
+	
 	for (int i=0; i<CANVAS_WIDTH; i++){
 		for (int j=0; j<CANVAS_HEIGHT; j++){
 			board[i][j]=0;
@@ -37,6 +39,7 @@ void Tetris::deleteFullLines(){
 
 void Tetris::dropDown(int line){
 
+	clearedLines++;
 	for (int j = line; j >= 1; j--){
 		for (int i = 0; i<CANVAS_WIDTH; i++){
 			board[i][j] = board[i][j-1];			
@@ -74,7 +77,7 @@ void Tetris::checkForLines(){
 void Tetris::draw(){
 
 	int s = 20;
-	glColor3ub(0,0,0);
+	glColor3ub(60,60,60);
 	ofNoFill();
 	ofRect( 0, 0, s * CANVAS_WIDTH, s * CANVAS_HEIGHT );
 	

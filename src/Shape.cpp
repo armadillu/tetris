@@ -22,15 +22,20 @@ void Shape::regenerate(){
 	y = -MAX_SHAPE_SIZE;
 
 	int color = ofRandom(1, NUM_PATTERNS);
+	int tiles = 0;
 	
 	for (int i = 0; i < MAX_SHAPE_SIZE; i++){
 		for (int j = 0; j < MAX_SHAPE_SIZE; j++){
-			if (ofRandom(0, 1) < 0.8)
+			if (ofRandom(0, 1) < 0.3){
 				shape[i][j] = color;
-			else
+				tiles++;
+			}else
 				shape[i][j] = 0;
 		}
 	}
+	
+	if (tiles == 0)	//at least one quad!
+		shape[0][0] = color;
 	
 	fresh = true;
 	falling = true;
